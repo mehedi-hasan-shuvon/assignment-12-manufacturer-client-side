@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useService from '../../CustomHooks/useService';
+// import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 // import Loading from '../Shared/Loading/Loading';
 // import PageTitle from '../Shared/PageTitle/PageTitle';
@@ -11,7 +14,7 @@ const ServiceDetails = () => {
     const { serviceId } = useParams();
     const [product, setProduct] = useState({});
     const [services, setServices] = useService();
-
+    const [user, loading, error] = useAuthState(auth);
 
     const navigate = useNavigate();
 
@@ -97,6 +100,7 @@ const ServiceDetails = () => {
                         // console.log('quantity updated');
 
                         toast(`quantity reduced by ${updatedRestock}`);
+
                         // event.target.reset();
                     })
             } else if (product.available_quantity == 0) {
@@ -121,7 +125,34 @@ const ServiceDetails = () => {
         }
 
 
+        const booking = {
+            treatmentId: product._id,
+            treatment: product.name,
+            price: product.price,
+            patient: user.email,
+            patientName: user.displayName,
+            // phone: event.target.phone.value
+        }
 
+        fetch('http://localhost:5000/booking', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                if (data.success) {
+                    toast(`success`)
+                } else {
+                    toast.error(`error`)
+                }
+                // refetch();
+                //to close the modal
+                // setTreatment(null);
+            })
 
 
     }
@@ -159,9 +190,9 @@ const ServiceDetails = () => {
                 <div className='py-3 restock-div'>
                     <h2>Place your desire quantity</h2>
                     <form onSubmit={handelRestock}>
-                        <input type="number" name='stock' placeholder='restock quantity' required />
+                        <input type="number" name='stock' placeholder='Order quantity' required />
 
-                        <input className='special-special-btn' type="submit" value="Restock" />
+                        <input className='special-special-btn' type="submit" value="Order" />
                     </form>
                 </div>
 
@@ -169,6 +200,7 @@ const ServiceDetails = () => {
 
             <div className='py-4 text-center'>
                 <button onClick={routeToManage} className='manage-inventory-button btn btn-primary'>Manage Inventories</button>
+
             </div>
         </div>
     );

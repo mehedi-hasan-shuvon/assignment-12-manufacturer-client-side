@@ -1,8 +1,11 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
+import './AddDoctor.css'
 
 const AddDoctor = () => {
 
@@ -11,6 +14,7 @@ const AddDoctor = () => {
     const { data: services, isLoading } = useQuery('services', () => fetch(`http://localhost:5000/service`).then(res => res.json()))
 
     const imageStorageKey = '1850bb661d20d500056843eaa0be7710';
+    const [user] = useAuthState(auth);
 
     /**
      * 3 ways to store images
@@ -20,49 +24,30 @@ const AddDoctor = () => {
      * 
      * YUP: to validate file need to study(yup file validation for react form)
     */
-    const onSubmit = async data => {
-        const image = data.image[0];
-        const formData = new FormData();
-        formData.append('image', image);
-        const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-        fetch(url, {
-            method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(result => {
-                if (result.success) {
-                    const img = result.data.url;
-                    const doctor = {
-                        name: data.name,
-                        email: data.email,
-                        specialty: data.specialty,
-                        img: img
-                    }
-                    // send to database
-                    fetch('http://localhost:5000/doctor', {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json',
-                            authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                        },
-                        body: JSON.stringify(doctor)
-                    })
-                        .then(res => res.json())
-                        .then(inserted => {
-                            if (inserted.insertedId) {
-                                toast.success('Doctor added successfully')
-                                reset();
-                            }
-                            else {
-                                toast.error('Failed to add the doctor');
-                            }
-                        })
-                }
-
+    const onSubmit = data => {
+        // console.log(data.price);
+        if (data.price <= 0) {
+            toast("price can not be negative or zero. Please Try again");
+        } else if (data.quantity <= 0) {
+            toast("Quantity can not be negative or zero. Please Try again");
+        } else {
+            data.supplierEmail = user.email;
+            const url = "http://localhost:5000/product";
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
             })
-        // navigate('/appointment');
-    }
+                .then(res => res.json())
+                .then(result => {
+                    // console.log(result);
+                    toast("product have been added");
+                })
+        }
+    };
+
 
     if (isLoading) {
         return <Loading></Loading>
@@ -71,112 +56,24 @@ const AddDoctor = () => {
 
     return (
         <div>
-            <h2 className='text-2xl'> Add a New Doctor</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-
-
-                {/* name field  */}
-                <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">Name</span>
-                        {/* <span className="label-text-alt">Alt label</span> */}
-                    </label>
-                    <input
-                        type="text" placeholder="Your Name"
-                        className="input input-bordered w-full max-w-xs"
-                        {...register("name",
-                            {
-                                required: {
-                                    value: true,
-                                    message: 'Name is Required'
-                                }
-                            })}
-                    />
-                    <label className="label">
-
-                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
-
-                        {/* <span className="label-text-alt">Alt label</span> */}
-                    </label>
+            <div>
+                <div className='w-75 mx-auto fff'>
+                    {/* <PageTitle title={"Add Product"}></PageTitle> */}
+                    <h1 className='text-center py-3 section-header'>Add products</h1>
+                    <form className='add-doctor-form add-product-form my-3 p-2' onSubmit={handleSubmit(onSubmit)}>
+                        <input className='my-2' placeholder='Product Name' {...register("name", { required: true, maxLength: 20 })} />
+                        <input className='mb-2' placeholder='Supplier Name' value={user?.displayName} type="text" {...register("supplierName")} />
+                        <input className='mb-2' placeholder='Supplier Email' value={user?.email} required readOnly disabled type="email" {...register("supplierEmail")} />
+                        <textarea className='mb-2' placeholder='Description' {...register("description")} />
+                        <input className='mb-2' placeholder='Price' type="number" {...register("price")} />
+                        <input className='mb-2' placeholder='Quantity' type="number" {...register("quantity")} />
+                        <input className='mb-2' placeholder='Available Quantity' type="number" {...register("available_quantity")} />
+                        <input className='mb-2' placeholder='Minimum Quantity' type="number" {...register("minimumquantity")} />
+                        <input className='mb-2' placeholder='Photo URL' type="text" {...register("img")} />
+                        <input className='my-2 add-btn' type="submit" value="Add Product" />
+                    </form>
                 </div>
-
-
-
-                {/* email field */}
-                <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">Email</span>
-                        {/* <span className="label-text-alt">Alt label</span> */}
-                    </label>
-                    <input
-                        type="email" placeholder="Your email"
-                        className="input input-bordered w-full max-w-xs"
-                        {...register("email",
-                            {
-                                required: {
-                                    value: true,
-                                    message: 'Email is Required'
-                                },
-                                pattern: {
-                                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                    message: 'Provide a valid email'
-                                }
-                            })}
-                    />
-                    <label className="label">
-
-                        {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                        {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                        {/* <span className="label-text-alt">Alt label</span> */}
-                    </label>
-                </div>
-
-
-                {/* Specialty field  */}
-                <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">Specialty</span>
-                        {/* <span className="label-text-alt">Alt label</span> */}
-                    </label>
-                    <select {...register("specialty")} class="select input-bordered w-full max-w-xs">
-                        {
-                            services.map(service =>
-                                <option key={service._id}
-                                    value={service.name}
-                                >{service.name}</option>)
-                        }
-                    </select>
-                </div>
-
-
-                {/* photo input section  */}
-
-                <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">Photo</span>
-                        {/* <span className="label-text-alt">Alt label</span> */}
-                    </label>
-                    <input
-                        type="file"
-                        className="input input-bordered w-full max-w-xs"
-                        {...register("image",
-                            {
-                                required: {
-                                    value: true,
-                                    message: 'Image is Required'
-                                }
-                            })}
-                    />
-                    <label className="label">
-
-                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
-
-                        {/* <span className="label-text-alt">Alt label</span> */}
-                    </label>
-                </div>
-
-                <input className='btn w-full max-w-xs text-white' type="submit" value="ADD" />
-            </form>
+            </div>
         </div>
     );
 };
