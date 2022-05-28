@@ -22,6 +22,7 @@ import ManageDoctors from './Pages/Dashboard/ManageDoctors';
 import Payment from './Pages/Dashboard/Payment';
 import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
 import Blog from './Pages/Blog/Blog';
+import Footer from './Pages/Shared/Footer';
 
 function App() {
   return (
@@ -66,7 +67,7 @@ function App() {
         }></Route>
       </Routes>
 
-
+        <Footer></Footer>
       <ToastContainer />
     </div>
   );

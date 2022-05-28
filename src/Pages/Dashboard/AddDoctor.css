@@ -1,5 +1,6 @@
 .add-doctor-form {
     display: flex;
     flex-direction: column;
-    
+    background-color: rgb(226, 130, 130);
+    border-radius: 10px;
 }
