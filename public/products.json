@@ -1,0 +1,11 @@
+[
+    {
+        "name": "hdd product1",
+        "price": "2700",
+        "Description": "fsdfsdsdfsdfsdfsdfsdfsdf sdfsdfsdf sdfsdf sdfsdf sdfsd fsdf sdfsdfsdf sd fsdfsdf sd",
+        "minimum_quantity": "100",
+        "available_quantity": "5000",
+        "state": "not_sold",
+        "img": "https://i.ibb.co/5RC2qSq/introtopythonpython-hawaii-2017-1-300x200.png"
+    }
+]
