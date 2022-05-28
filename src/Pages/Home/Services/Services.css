@@ -1,6 +1,7 @@
 .services-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin: auto;
 
     grid-gap: 20px;
 }
@@ -10,10 +11,16 @@
     color: blue;
 }
 
-.section-header{
-    font-family:monospace;
+.section-header {
+    font-family: monospace;
     font-weight: 700;
     color: #334257;
+}
+
+.manage-inventory-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* make services responsive*/

@@ -1,5 +1,5 @@
 import React from "react";
-import appointment from '../../assets/images/appointment.png';
+import appointment from '../../assets/images/factory3.jpg';
 import Primarybutton from '../Shared/Primarybutton';
 const Contact = () => {
     return (
@@ -10,7 +10,7 @@ const Contact = () => {
                 <p className='text-xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent to-secondary'>
                     Contact Us
                 </p>
-                <h1 className='text-4xl'>Stay connected with us</h1>
+                <h1 className='text-4xl text-yellow-600 font-bold'>Stay connected with us</h1>
             </div>
             <div className='grid grid-cols-1 justify-items-center gap-5'>
                 <input

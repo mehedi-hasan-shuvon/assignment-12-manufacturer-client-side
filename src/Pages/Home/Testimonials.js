@@ -10,33 +10,36 @@ const Testimonials = () => {
     const reviews = [
         {
             _id: 1,
-            name: 'Winson Herry',
+            name: 'Kamal',
             review: '',
-            location: 'california',
+            describe:'I have visited their factory in Dhaka. their R&D sector is best of country.Dont waste time!!! place your order now',
+            location: 'Dhaka',
             img: people1
         },
         {
             _id: 2,
-            name: 'Winson Herry',
+            name: 'Morium',
             review: '',
-            location: 'california',
+            describe:'I Love to business with you. with cheap hard disk i was able tow start my laptop business successfully.Give them a 5 star for that',
+            location: 'Chittagong',
             img: people2
         },
         {
             _id: 3,
-            name: 'Winson Herry',
+            name: 'Sumaiya',
             review: '',
-            location: 'california',
+            describe:'I can trust hard disk bd blindly. Having business over 5 years and never find any problem at all. I will suggest all my friends about this',
+            location: 'Shylet',
             img: people3
         },
     ];
 
     return (
-        <section className='my-28'>
+        <section className='mb-9'>
             <div className='flex justify-between'>
                 <div>
                     <h4 className="text-xl text-primary font-bold">Testimonials</h4>
-                    <h2 className='text-3xl'>What our Patients say</h2>
+                    <h2 className='text-3xl'>What our Customer say</h2>
                 </div>
                 <div>
                     <img src={qoute} className="w-24 lg:w-48" alt="" />

@@ -29,7 +29,7 @@ const Services = () => {
     // console.log(services);
     return (
         <div id='services' className='container pb-3'>
-            <h1 className='text-center  my-4 section-header'>Inventory Preview</h1>
+            <h1 className='text-center  my-8 text-4xl font-bold'>Our Top Products</h1>
             <div className='services-container'>
 
                 {
@@ -40,8 +40,8 @@ const Services = () => {
                     ></Service>)
                 }
             </div>
-            <div className='py-4'>
-                <button onClick={routeToManage} className='manage-inventory-button btn btn-primary'>Manage Inventories</button>
+            <div className='py-4 manage-inventory-button '>
+                <button onClick={routeToManage} className='manage-inventory-button btn btn-primary my-3'>Manage Inventories</button>
             </div>
         </div>
     );
