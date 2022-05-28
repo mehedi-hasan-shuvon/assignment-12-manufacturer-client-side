@@ -1,0 +1,37 @@
+.item-details-container{
+    /* border: 1px solid #B1D0E0; */
+    background-color: #E8F9FD;
+    border-radius: 10px;
+    color: #363062;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.details-img{
+    background-color:   #B1D0E0 ;
+    border-radius: 10px 10px 0px 0px;
+    
+}
+.details-context{
+    text-align: left;
+    padding: 30px;   
+    border-radius: 10px;
+}
+
+.restock-div{
+    text-align: center;
+    background-color:   #B1D0E0 ;
+    border-radius: 0px 0px 10px 10px;
+
+}
+.special-special-btn{
+    background-color: #363062;
+    border: 1px solid #363062;
+    color: white;
+}
+
+@media only screen and (max-width:576px) {
+   .item-details-container{
+    width: 90% !important;
+   }
+   
+}
