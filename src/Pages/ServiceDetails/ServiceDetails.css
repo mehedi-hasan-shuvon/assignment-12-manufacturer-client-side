@@ -28,7 +28,17 @@
     border: 1px solid #363062;
     color: white;
 }
+.sdfds{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.manage-inventory-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media only screen and (max-width:576px) {
    .item-details-container{
     width: 90% !important;

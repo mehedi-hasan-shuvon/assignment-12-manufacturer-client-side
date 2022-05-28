@@ -41,7 +41,7 @@ const Services = () => {
                 }
             </div>
             <div className='py-4 manage-inventory-button '>
-                <button onClick={routeToManage} className='manage-inventory-button btn btn-primary my-3'>Manage Inventories</button>
+                <button onClick={routeToManage} className='manage-inventory-button btn btn-primary my-3'>Explore All products</button>
             </div>
         </div>
     );

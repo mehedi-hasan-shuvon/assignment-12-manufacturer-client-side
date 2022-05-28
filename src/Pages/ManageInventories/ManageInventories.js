@@ -51,40 +51,31 @@ const ManageInventories = () => {
             <h1 className='py-3 text-center section-header text-2xl'>Explore all products</h1>
             <h2 className='text-center'>Total: {services.length}</h2>
             {
-                services.map(product => <div key={product._id}>
+                services.map(product => <div key={product._id} className="py-5 ">
                     {/* <h4>{product.name}
                         <button onClick={() => handelDelete(product._id)}>X</button>
                     </h4> */}
-                    <div className='inventory my-3'>
-                        <div className='row'>
-                            <div className='col-md-4 text-center d-flex  align-items-center left-side-in'>
-                                <img className='inventory-img' src={product.img} alt="" />
-                                <h4>{product.name}</h4>
-                            </div>
-                            <div className='col-md-3 d-flex justify-content-center align-items-center middle-in'>
-                                <div>
-
-                                    <p>supplier name: {product.supplierName}</p>
-                                    <p>description: {product.description}</p>
+                    <div className='service services-container '>
+                        <img className='img-fluid w-100 img-border item-img-single' src={product?.img} alt="" />
+                        {
+                            product?.price > 50000 ? <div class="badge">Hot</div> : <></>
+                        }
+                        <div className='item-description-single'>
+                            <h2 className='product-name-single'>{product?.name} </h2>
+                            <p className='product-details-single'>{product?.description}</p>
+                            <hr />
+                            <div className='row'>
+                                <div className='col-6 d-flex flex-column justify-content-center '>
+                                    <p className='product-price-single'>Minimum Order Quantity: {product?.minimum_quantity}</p>
+                                    <p className='product-price-single'>Available Order Quantity: {product?.available_quantity}</p>
+                                    <p className='product-price-single'>Price: {product?.price} BDT (per pies)</p>
+                                </div>
+                                <div className='col-6 d-flex flex-column justify-content-center align-items-center'>
+                                    <button onClick={() => stokeUpdate(product?._id)} className='btn btn-primary checkout-btn'><FontAwesomeIcon icon={faList} /> Order Now </button>
                                 </div>
                             </div>
-                            <div className='col-md-3 d-flex flex-column justify-content-center align-items-center right-middle'>
-                                <p className='text-white'>Quantity: {product.quantity} pieces only</p>
 
-                                <p className='text-white'>Price: {product.price}BDT (per piece)</p>
-                            </div>
-                            <div className='col-md-2 d-flex justify-content-center align-items-center right-in'>
-                                <div className='row '>
-                                    <div className='col-12 d-flex justify-content-center align-items-center'>
-                                        <button onClick={() => stokeUpdate(product._id)} className='btn btn-primary checkout-btn-special'><FontAwesomeIcon icon={faList} /> Manage</button>
-                                    </div>
-                                    <div className='col-12 d-flex justify-content-center align-items-center'>
-                                        <button onClick={() => handelDelete(product._id)} className='btn btn-primary item-remove-button' ><FontAwesomeIcon icon={faDeleteLeft} /> Remove </button>
-                                    </div>
 
-                                </div>
-
-                            </div>
                         </div>
                     </div>
 

@@ -159,15 +159,15 @@ const ServiceDetails = () => {
     return (
         <div className=''>
             {/* <PageTitle title={"Item Details"}></PageTitle> */}
-            <h1 className='section-header pt-3 text-center'>Item Details</h1>
-            <div className='item-details-container w-50 mx-auto my-4'>
+            <h1 className='section-header pt-3 text-center text-2xl'>Product Details</h1>
+            <div className='item-details-container w-1/2 mx-auto my-4'>
                 {/* <div className='text-center details-img'>
                     <img src={product?.img} alt="" />
                 </div> */}
                 {
                     product.img ?
-                        <div className='text-center details-img'>
-                            <img src={product?.img} alt="" />
+                        <div className='text-center details-img sdfds'>
+                            <img  src={product?.img} alt="" />
                         </div>
                         : <Loading></Loading>
 
@@ -190,16 +190,16 @@ const ServiceDetails = () => {
                 <div className='py-3 restock-div'>
                     <h2>Place your desire quantity</h2>
                     <form onSubmit={handelRestock}>
-                        <input type="number" name='stock' placeholder='Order quantity' required />
-
-                        <input className='special-special-btn' type="submit" value="Order" />
+                        <input type="number" name='stock' className='my-3' placeholder='Order quantity' required />
+                        <br />
+                        <input className='btn btn-primary' type="submit" value="Order" />
                     </form>
                 </div>
 
             </div>
 
             <div className='py-4 text-center'>
-                <button onClick={routeToManage} className='manage-inventory-button btn btn-primary'>Manage Inventories</button>
+                <button onClick={routeToManage} className='aaa btn btn-primary'>Explore all products</button>
 
             </div>
         </div>
