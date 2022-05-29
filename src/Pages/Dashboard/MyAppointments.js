@@ -11,7 +11,7 @@ const MyAppointments = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/booking?patient=${user.email}`, {
+            fetch(`https://murmuring-tor-12008.herokuapp.com/booking?patient=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -43,9 +43,8 @@ const MyAppointments = () => {
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Treatment</th>
+
+                            <th>Product Name</th>
                             <th>Payment</th>
                         </tr>
                     </thead>
@@ -55,8 +54,6 @@ const MyAppointments = () => {
                                 <tr key={a._id}>
                                     <th>{index + 1}</th>
                                     <td>{a.patientName}</td>
-                                    <td>{a.date}</td>
-                                    <td>{a.slot}</td>
                                     <td>{a.treatment}</td>
                                     <td>
                                         {(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}><button className='btn btn-xl btn-success'>Pay</button></Link>}

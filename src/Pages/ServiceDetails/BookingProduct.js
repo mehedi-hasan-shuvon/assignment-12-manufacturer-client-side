@@ -27,7 +27,7 @@ const BookingProduct = ({ treatment, date, setTreatment, refetch }) => {
 
         // console.log(booking);
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://murmuring-tor-12008.herokuapp.com/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

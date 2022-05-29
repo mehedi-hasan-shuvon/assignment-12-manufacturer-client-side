@@ -11,7 +11,7 @@ const AddDoctor = () => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: services, isLoading } = useQuery('services', () => fetch(`http://localhost:5000/service`).then(res => res.json()))
+    const { data: services, isLoading } = useQuery('services', () => fetch(`https://murmuring-tor-12008.herokuapp.com/service`).then(res => res.json()))
 
     const imageStorageKey = '1850bb661d20d500056843eaa0be7710';
     const [user] = useAuthState(auth);
@@ -32,7 +32,7 @@ const AddDoctor = () => {
             toast("Quantity can not be negative or zero. Please Try again");
         } else {
             data.supplierEmail = user.email;
-            const url = "http://localhost:5000/product";
+            const url = "https://murmuring-tor-12008.herokuapp.com/product";
             fetch(url, {
                 method: 'POST',
                 headers: {

@@ -27,7 +27,7 @@ const ManageInventories = () => {
     const handelDelete = id => {
         const procced = window.confirm("are you sure?");
         if (procced) {
-            const url = `http://localhost:5000/product/${id}`
+            const url = `https://murmuring-tor-12008.herokuapp.com/product/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

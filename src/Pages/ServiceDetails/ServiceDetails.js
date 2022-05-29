@@ -25,7 +25,7 @@ const ServiceDetails = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/product/${serviceId}`;
+        const url = `https://murmuring-tor-12008.herokuapp.com/product/${serviceId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data));
@@ -38,7 +38,7 @@ const ServiceDetails = () => {
         if (product.quantity > 0) {
             setProduct(product);
             // console.log(product);
-            const url = `http://localhost:5000/product/${serviceId}`;
+            const url = `https://murmuring-tor-12008.herokuapp.com/product/${serviceId}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -53,7 +53,7 @@ const ServiceDetails = () => {
                     // event.target.reset();
                 })
         } else {
-            const url = `http://localhost:5000/product/${serviceId}`
+            const url = `https://murmuring-tor-12008.herokuapp.com/product/${serviceId}`
 
             fetch(url, {
                 method: 'DELETE'
@@ -87,7 +87,7 @@ const ServiceDetails = () => {
                 setProduct(product);
 
                 console.log(product);
-                const url = `http://localhost:5000/product/${serviceId}`;
+                const url = `https://murmuring-tor-12008.herokuapp.com/product/${serviceId}`;
                 fetch(url, {
                     method: 'PUT',
                     headers: {
@@ -104,7 +104,7 @@ const ServiceDetails = () => {
                         // event.target.reset();
                     })
             } else if (product.available_quantity == 0) {
-                const url = `http://localhost:5000/product/${serviceId}`
+                const url = `https://murmuring-tor-12008.herokuapp.com/product/${serviceId}`
 
                 fetch(url, {
                     method: 'DELETE'
@@ -134,7 +134,7 @@ const ServiceDetails = () => {
             // phone: event.target.phone.value
         }
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://murmuring-tor-12008.herokuapp.com/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -145,9 +145,9 @@ const ServiceDetails = () => {
             .then(data => {
                 // console.log(data);
                 if (data.success) {
-                    toast(`success`)
+                    // toast(`success`)
                 } else {
-                    toast.error(`error`)
+                    // toast.error(`error`)
                 }
                 // refetch();
                 //to close the modal
@@ -167,7 +167,7 @@ const ServiceDetails = () => {
                 {
                     product.img ?
                         <div className='text-center details-img sdfds'>
-                            <img  src={product?.img} alt="" />
+                            <img src={product?.img} alt="" />
                         </div>
                         : <Loading></Loading>
 

@@ -37,7 +37,7 @@ const SignUp = () => {
 
     if (token) {
         // console.log(user || gUser);
-        navigate('/appointment');
+        navigate('/');
     }
 
 
