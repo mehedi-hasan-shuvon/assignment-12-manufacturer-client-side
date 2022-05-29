@@ -23,6 +23,7 @@ import Payment from './Pages/Dashboard/Payment';
 import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
 import Blog from './Pages/Blog/Blog';
 import Footer from './Pages/Shared/Footer';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -65,9 +66,10 @@ function App() {
             <ServiceDetails></ServiceDetails>
           </RequireAuth>
         }></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
 
-        <Footer></Footer>
+      <Footer></Footer>
       <ToastContainer />
     </div>
   );

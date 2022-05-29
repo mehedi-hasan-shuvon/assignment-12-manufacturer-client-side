@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Hard Disk BD - (Assignment-12)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+## Description
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This is a Full Stack warehouse inventory system project with tailwind,  daisiUI, Firebase, react-route,react-font-awesome,react-helmet,react-auth-hooks,react-toast,JWT,Nodejs,Mongodb,Heroku, stripe  etc implemented.the main functionality of the project  is given bellow:
+- In the Home page you can banner section which is implemented by react-bootstrap, react-toast, react-firebase-hooks and then there is Inventory section which only  shows 6 Items of the inventory with a manage Stock button. And if the button pressed it takes a purchase page where you can buy any quantity of the product. and after the show all product section there is show all products button which takes to the page where all the items are been shown.
+In the dashboard user can see his/her orders and make payment with stripe
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- In the Add products page new product with its quantity can be added and it will be stored directly to mongodb server with the help of heroku. All pages will be updated with the new value and there is also manage inventories button which  will redirect to Inventory page with the help of react-router.
+- In the inventory page all the products with their details and quantity will be displayed and any product can be manage or cancel/deleted and while by complete it a toast will pop up with necessary update message.
+- In the My items page only the items added by a user will be shown.To ensure JWT token system has been implemented to verify actual user.
+- In the blog page there all the assignment question is submitted and in about page my short details with life goal has been givern.
+- Lastly, There is firebase implemented login and registration page where login can be done with email/password, google social account or github account. Also after registration verification code will be sent to email and there is also a reset password option.
 
-### `npm test`
+List of Technologies  I used:
+- Tailwind(DaisyUi)
+- react-toast
+- Firebase
+- react-firebase-hooks
+- react-router
+- react-font-awesome
+- react-helmet
+- react-toast
+- JWT
+- Nodejs
+- Mongodb
+- Heroku
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Live Site Link:
+[https://assignment-12-hddbd.web.app/](https://assignment-12-hddbd.web.app/)
